@@ -46,16 +46,18 @@ LoadPlugin {{ plugin }}
 {% for line in collectd_plugins_options[plugin] %}
     {{line}}
 {% endfor %}
-{% if plugin equalto 'python' %}
+{% if plugin == 'python' %}
 {% for module in collectd_python_modules %}
     Import "{{ module }}"
-    <Module {{ module}}>
-{% if collectd_python_modules.get(module) %}
-{% for line in collectd_plugins_options[module] %}
-    {{line}}
 {% endfor %}
-    </Module>
+{% for module in collectd_python_modules %}
+    <Module {{ module}}>
+{% if collectd_python_modules_options.get(module) %}
+{% for line in collectd_python_modules_options[module] %}
+        {{line}}
+{% endfor %}
 {% endif %}
+    </Module>
 {% endfor %}
 {% endif %}
 </Plugin>
