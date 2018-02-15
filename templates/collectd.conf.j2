@@ -42,10 +42,22 @@ LoadPlugin {{ plugin }}
 {% for plugin in collectd_plugins %}
 LoadPlugin {{ plugin }}
 {% if collectd_plugins_options.get(plugin) %}
-<Plugin {{plugin}}>
+<Plugin {{ plugin }}>
 {% for line in collectd_plugins_options[plugin] %}
-	{{line}}
+    {{line}}
 {% endfor %}
+{% if plugin equalto 'python' %}
+{% for module in collectd_python_modules %}
+    Import "{{ module }}"
+    <Module {{ module}}>
+{% if collectd_python_modules.get(module) %}
+{% for line in collectd_plugins_options[module] %}
+    {{line}}
+{% endfor %}
+    </Module>
+{% endif %}
+{% endfor %}
+{% endif %}
 </Plugin>
 {% endif %}
 {% endfor %}
