@@ -27,6 +27,15 @@ collectd_fdqnlookup: false
 collectd_plugins: []                # Ex. [nginx, memcached]
 collectd_plugins_options: {}        # See below for examples.
 
+# Collectd python modules
+# Ex. 
+# collectd_python_modules: [spam]
+# collectd_python_modules_options:
+#   spam:
+#     - spam "wonderful" "lovely"
+collectd_python_modules: []
+collectd_python_modules_options: {}
+
 # Collectd default plugins
 collectd_default_plugins: [cpu, df, interface, load, memory, swap]
 collectd_default_plugins_options:
