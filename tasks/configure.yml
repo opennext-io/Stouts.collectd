@@ -7,6 +7,13 @@
 - name: collectd-configure | Ensure conf.d directory
   file: path={{collectd_config_dir}} state=directory
 
+- name: collectd-configure | Configure additional plugins
+  template: src=logging.conf.j2 dest={{collectd_config_dir} validate='{{collectd_sbin_path}}/collectd -t -C %s'
+  template: src=default.conf.j2 dest={{collectd_config_dir} validate='{{collectd_sbin_path}}/collectd -t -C %s'
+  template: src=graphite.conf.j2 dest={{collectd_config_dir} validate='{{collectd_sbin_path}}/collectd -t -C %s'
+  template: src=user.conf.j2 dest={{collectd_config_dir} validate='{{collectd_sbin_path}}/collectd -t -C %s'
+  notify: collectd restart
+
 - name: collectd-configure | Configure additional types
   template: src=types.db.j2 dest={{collectd_additional_types_db_path}}
   notify: collectd restart

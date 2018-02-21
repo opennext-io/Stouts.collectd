@@ -19,6 +19,7 @@ collectd_plugins_prefix: "{{collectd_prefix_conf}}/conf.d"
 
 # General options
 collectd_interval: 10
+collectd_timeout: 2
 collectd_readthreads: 7
 collectd_hostname: "{{ inventory_hostname }}"
 collectd_fdqnlookup: false
