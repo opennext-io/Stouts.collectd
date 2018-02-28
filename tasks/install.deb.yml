@@ -2,7 +2,7 @@
 
 - name: collectd-install | Install dependencies
   apt: name={{item}} force=yes
-  with_items: [build-essential, libcurl4-openssl-dev, libpcap-dev, libyajl-dev]
+  with_items: [build-essential, libcurl4-openssl-dev, libpcap-dev, libyajl-dev, libxml-2.0, libvirt-dev]
 
 - name: collectd-install | Download Collectd
   get_url: url=http://collectd.org/files/collectd-{{collectd_version}}.tar.bz2 dest=/usr/src
@@ -12,8 +12,8 @@
   unarchive: src=/usr/src/collectd-{{collectd_version}}.tar.bz2 dest=/usr/src copy=no
   when: collectd_source.changed
 
-- name: collectd-install | Install Collectd
-  shell: ./configure --prefix={{collectd_prefix}} && make all install
+- name: collectd-install | Compile and Install Collectd
+  shell: export PYTHON_CONFIG=/usr/bin/python2.7-config && ./configure --prefix={{collectd_prefix}} && make all install
   args:
     chdir: /usr/src/collectd-{{collectd_version}}
     creates: "{{collectd_prefix}}"
