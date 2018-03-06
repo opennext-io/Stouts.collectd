@@ -2,7 +2,7 @@
 
 - name: collectd-install | Install dependencies
   apt: name={{item}} force=yes
-  with_items: [build-essential, libcurl4-openssl-dev, libpcap-dev, libyajl-dev, libxml-2.0, libvirt-dev]
+  with_items: [build-essential, libcurl4-openssl-dev, libpcap-dev, libyajl-dev, libxml2, libvirt-dev]
 
 - name: collectd-install | Download Collectd
   get_url: url=http://collectd.org/files/collectd-{{collectd_version}}.tar.bz2 dest=/usr/src
