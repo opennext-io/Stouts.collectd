@@ -1,8 +1,5 @@
-Stouts.collectd
-==========
-
-[![Build Status](http://img.shields.io/travis/Stouts/Stouts.collectd.svg?style=flat-square)](https://travis-ci.org/Stouts/Stouts.collectd)
-[![Galaxy](http://img.shields.io/badge/galaxy-Stouts.collectd-blue.svg?style=flat-square)](https://galaxy.ansible.com/list#/roles/1960)
+Collectd
+========
 
 Ansible role which help you with:
 
