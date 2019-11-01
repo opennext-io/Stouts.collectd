@@ -1,5 +1,17 @@
 ---
-- name: Install the latest version of collectd 
-  yum:
+- name: Install Grafana
+  package:
     name: collectd
-    state: latest
+    state: "{{ (collectd_version == 'latest') | ternary('latest', 'present') }}"
+  register: _install_packages
+  until: _install_packages is succeeded
+  retries: 5
+  delay: 2
+  notify: collectd restart
+
+- debug: var=_install_packages
+- name: Remove legacy config files
+  shell: rm -rf collectd.conf collect.d
+  args:
+    chdir: /etc
+  

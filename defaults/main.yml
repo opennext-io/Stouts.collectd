@@ -1,8 +1,8 @@
 ---
 
 collectd_enabled: yes               # Enable the role
-collectd_version: 5.8             # Set version
-collectd_service: upstart
+collectd_version: latest             # Set version
+collectd_service: systemd
 collectd_service_autodetect: true   # try to detect collectd_service
 
 # PPA options
@@ -11,10 +11,10 @@ collectd_use_ppa_latest: no         # Don't fix package version to collectd_vers
 collectd_ppa_source: 'ppa:collectd/collectd-5.5'
 
 # Source options
-collectd_prefix: /opt/collectd      # The place where Collectd will be installed
-collectd_prefix_type: "{{collectd_prefix}}/etc"
-collectd_prefix_conf: "{{collectd_prefix}}/etc"
-collectd_prefix_sbin: "{{collectd_prefix}}/sbin"
+collectd_prefix: "/etc"      # The place where Collectd will be installed
+collectd_prefix_type: "{{collectd_prefix}}/collectd"
+collectd_prefix_conf: "{{collectd_prefix}}/collectd"
+collectd_prefix_sbin: "/usr/sbin"
 collectd_plugins_prefix: "{{collectd_prefix_conf}}/conf.d"
 
 # General options
