@@ -1,9 +1,12 @@
 ---
-
+- name: Create log directory 
+  file:
+    path: "{{ collectd_logpath }}"
+    state: directory
+    mode: 0664
 - name: collectd-configure | Configure Collectd
   template: src=collectd.conf.j2 dest={{collectd_config_file}} validate='{{collectd_sbin_path}}/collectd -t -C %s'
   notify: collectd restart
-
 - name: collectd-configure | Ensure conf.d directory
   file: path={{collectd_config_dir}} state=directory
 - name: collectd-configure | Configure logging plugin

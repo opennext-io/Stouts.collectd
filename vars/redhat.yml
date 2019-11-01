@@ -1,0 +1,4 @@
+---
+collectd_service: ignore
+collectd_dependencies:
+  - epel-release

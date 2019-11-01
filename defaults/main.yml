@@ -1,7 +1,7 @@
 ---
 
 collectd_enabled: yes               # Enable the role
-collectd_version: 5.5.2             # Set version
+collectd_version: 5.8             # Set version
 collectd_service: upstart
 collectd_service_autodetect: true   # try to detect collectd_service
 
@@ -64,7 +64,7 @@ collectd_write_graphite_options:    # Setup write_graphite (https://collectd.org
   StoreRates: 'true'
 
 # Setup logs
-collectd_logpath:                   # If it is not empty, will be used logfile
+collectd_logpath: /var/log/collectd  # If it is not empty, will be used logfile
 collectd_loglevel: info
 collectd_logrotate: yes
 collectd_type: yes
