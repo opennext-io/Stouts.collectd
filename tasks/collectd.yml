@@ -31,7 +31,7 @@
   tags: collectd-install
 
 - include: install.rpm.yml
-  when: ansible_os_family == 'ReadHat'
+  when: ansible_os_family == 'RedHat'
   tags: collectd-install
 
 - include: configure.yml
