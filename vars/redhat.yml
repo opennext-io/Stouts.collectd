@@ -1,4 +1,4 @@
 ---
-collectd_service: ignore
+collectd_service: systemd
 collectd_dependencies:
   - epel-release

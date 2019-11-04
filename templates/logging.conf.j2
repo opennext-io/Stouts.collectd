@@ -6,7 +6,7 @@
 LoadPlugin logfile
 <Plugin logfile>
         LogLevel "{{collectd_loglevel}}"
-        File "{{collectd_logpath}}"
+        File "{{collectd_logpath}}/collectd.log"
         Timestamp true
 </Plugin>
 {% else %}

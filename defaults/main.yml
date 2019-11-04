@@ -77,7 +77,8 @@ collectd_logrotate_options:
   - size 10M
 
 # Paths
-collectd_types_db_path: "{{ '/usr/share/collectd/types.db' if collectd_use_ppa else collectd_prefix + '/share/collectd/types.db' }}"
+#collectd_types_db_path: "{{ '/usr/share/collectd/types.db' if collectd_use_ppa else collectd_prefix + '/share/collectd/types.db' }}"
+collectd_types_db_path: "/usr/share/collectd/types.db"
 collectd_additional_types_db_path: "{{ '/usr/share/collectd/additional-types.db' if collectd_use_ppa else collectd_prefix_type + '/types.db' }}"
 collectd_config_file: "{{ '/etc/collectd/collectd.conf' if collectd_use_ppa else collectd_prefix_conf + '/collectd.conf' }}"
 collectd_config_dir: "{{ '/etc/collectd/collectd.conf.d' if collectd_use_ppa else collectd_plugins_prefix }}"
