@@ -1,5 +1,5 @@
 ---
-- name: Install Grafana
+- name: Install collectd
   package:
     name: collectd
     state: "{{ (collectd_version == 'latest') | ternary('latest', 'present') }}"
@@ -9,9 +9,12 @@
   delay: 2
   notify: collectd restart
 
-- debug: var=_install_packages
-- name: Remove legacy config files
-  shell: rm -rf collectd.conf collect.d
-  args:
-    chdir: /etc
+- name: Remove legacy collectd config files
+  file:
+    path: "{{ item }}"
+    state: absent
+  with-items:
+    - /etc/collectd.conf
+    - /etc/collect.d
+  when: _install_package.changed
   
