@@ -21,6 +21,6 @@
     state: absent
   with_items:
     - /etc/collectd.conf
-    - /etc/collect.d
+    - /etc/collectd.d
   when: _install_packages.changed
   
