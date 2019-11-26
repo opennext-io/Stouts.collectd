@@ -2,3 +2,4 @@
 collectd_service: systemd
 collectd_dependencies:
   - epel-release
+  - collectd-virt
