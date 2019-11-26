@@ -7,7 +7,7 @@
 
 - name: Install collectd
   package:
-    name: collectd-{{ collectd_version }}
+    name: collectd
     state: "{{ (collectd_version == 'latest') | ternary('latest', 'present') }}"
   register: _install_packages
   until: _install_packages is succeeded
